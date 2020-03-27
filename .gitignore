@@ -1,5 +1,14 @@
-# Object file
+.gen
 *.o
-
-# Ada Library Information
 *.ali
+*.so
+b__*
+*.stderr
+*.stdout
+messages.txt
+*.lexch
+*-loc.xml
+core
+*.a
+.#*#
+*.cgpr
