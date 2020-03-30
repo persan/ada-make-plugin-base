@@ -1,0 +1,14 @@
+.#*#
+*.a
+*.ali
+b__*
+*.cgpr
+core
+.gen
+*.lexch
+*-loc.xml
+messages.txt
+*.o
+*.so
+*.stderr
+*.stdout
