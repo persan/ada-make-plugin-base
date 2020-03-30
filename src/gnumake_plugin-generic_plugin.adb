@@ -1,11 +1,11 @@
 pragma Ada_2012;
-with Gnumake_H;
+with Gnumake_Plugin.Low_Level.Gnumake_H;
 with Gnumake_Plugin.Image;
 with Interfaces.C.Strings;
 with System;
 
 package body Gnumake_Plugin.Generic_Plugin is
-
+   use Gnumake_Plugin.Low_Level.Gnumake_H;
    function Local
      (Nm   : Interfaces.C.Strings.Chars_Ptr;
       Argc : Interfaces.C.Unsigned;
@@ -36,11 +36,11 @@ package body Gnumake_Plugin.Generic_Plugin is
 
    procedure Init is
    begin
-      Gnumake_H.Gmk_Add_Function (Name => Interfaces.C.Strings.New_String (Name),
-                                  Func => Local'Unrestricted_Access,
-                                  Min_Args => Interfaces.C.Unsigned (Min_Args),
-                                  Max_Args => Interfaces.C.Unsigned (Max_Args),
-                                  Flags => Gnumake_Plugin.Flags'Pos (Flags));
+      Gmk_Add_Function (Name => Interfaces.C.Strings.New_String (Name),
+                        Func => Local'Unrestricted_Access,
+                        Min_Args => Interfaces.C.Unsigned (Min_Args),
+                        Max_Args => Interfaces.C.Unsigned (Max_Args),
+                        Flags => Gnumake_Plugin.Flags'Pos (Flags));
    end Init;
 begin
    Register (Init'Unrestricted_Access);

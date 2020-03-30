@@ -13,3 +13,4 @@ core
 .#*#
 *.cgpr
 Makefile.conf
+*.cswi

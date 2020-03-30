@@ -5,7 +5,7 @@ with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Strings;
 with System;
 
-package gnumake_h is
+package Gnumake_Plugin.Low_Level.gnumake_h is
 
    GMK_FUNC_DEFAULT : constant := 16#00#;  --  /usr/include/gnumake.h:76
    GMK_FUNC_NOEXPAND : constant := 16#01#;  --  /usr/include/gnumake.h:77
@@ -88,4 +88,4 @@ package gnumake_h is
         Convention => C, 
         External_Name => "gmk_add_function";
 
-end gnumake_h;
+end Gnumake_Plugin.Low_Level.gnumake_h;

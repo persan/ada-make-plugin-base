@@ -8,11 +8,12 @@ library project Make_Plugin_Base is
    Init_Method_Name := "lib" & project'Library_Name  & "_gmk_setup";
 
 
-   Base_Library_Interface := ("gnumake_h",
-                              "gnumake_plugin",
-                              "gnumake_plugin.generic_plugin",
-                              "gnumake_plugin.image",
-                              "gnumake_plugin.string_vectors");
+   Base_Library_Interface := ("Gnumake_Plugin.Low_Level.gnumake_h",
+                              "Gnumake_Plugin",
+                              "Gnumake_Plugin.low_Level",
+                              "Gnumake_Plugin.generic_plugin",
+                              "Gnumake_Plugin.image",
+                              "Gnumake_Plugin.string_vectors");
    for Library_Interface use Base_Library_Interface;
    for Library_Standalone use "encapsulated";
    for Library_Kind use "dynamic";
