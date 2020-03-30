@@ -12,3 +12,4 @@ core
 *.a
 .#*#
 *.cgpr
+Makefile.conf
