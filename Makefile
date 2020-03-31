@@ -30,7 +30,7 @@ uninstall:
 	@-gprinstall -f -P make_plugin_base.gpr --uninstall	
 reinstall:uninstall  install
 
-tag:
+tag:test
 	@bin/check v`bin/version`-`date +%Y%m%d`
 	@git tag v`bin/version`-`date +%Y%m%d`
-	@git push --all
+	@git push --all --tag
