@@ -17,6 +17,7 @@ generate:
 .PHONY: test install uninstall reinstall tag  # IGNORE
 
 test:
+	gprbuild -p -P bin/helpers
 	${MAKE} -C example
 
 install:
@@ -29,11 +30,7 @@ uninstall:
 	@-gprinstall -f -P make_plugin_base.gpr --uninstall	
 reinstall:uninstall  install
 
-bin/version: # IGNORE
-	gprbuild -p -P bin/helpers
-
-tag:bin/version
+tag:
 	@bin/check v`bin/version`-`date +%Y%m%d`
 	@git tag v`bin/version`-`date +%Y%m%d`
 	@git push --all
-	@git push --tags

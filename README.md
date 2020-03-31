@@ -20,4 +20,4 @@ $sudo make install
 * Done
 
 ## History:
-* v1.0.1-20200331 Inital version
+* v1.0.0-20200331 Inital version
