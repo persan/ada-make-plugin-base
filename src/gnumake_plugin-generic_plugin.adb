@@ -7,21 +7,21 @@ with System;
 package body Gnumake_Plugin.Generic_Plugin is
    use Gnumake_Plugin.Low_Level.Gnumake_H;
    function Local
-     (Nm   : Interfaces.C.Strings.Chars_Ptr;
+     (Nm   : Interfaces.C.Strings.chars_ptr;
       Argc : Interfaces.C.Unsigned;
-      Argv : System.Address) return Interfaces.C.Strings.Chars_Ptr with Convention => C;
+      Argv : System.Address) return Interfaces.C.Strings.chars_ptr with Convention => C;
 
 
    -----------
    -- Local --
    -----------
    function Local
-     (Nm   : Interfaces.C.Strings.Chars_Ptr;
+     (Nm   : Interfaces.C.Strings.chars_ptr;
       Argc : Interfaces.C.Unsigned;
-      Argv : System.Address) return Interfaces.C.Strings.Chars_Ptr
+      Argv : System.Address) return Interfaces.C.Strings.chars_ptr
    is
       use     Interfaces.C;
-      type Chars_Ptr_Vector is array (0 .. Argc - 1) of Interfaces.C.Strings.Chars_Ptr;
+      type Chars_Ptr_Vector is array (0 .. Argc - 1) of Interfaces.C.Strings.chars_ptr;
       Args : Chars_Ptr_Vector with
         Import => True,
         Address => Argv;
@@ -31,7 +31,7 @@ package body Gnumake_Plugin.Generic_Plugin is
       for I of Args loop
          Args_Impl.Append (Interfaces.C.Strings.Value (I));
       end loop;
-      return Interfaces.C.Strings.New_String (Image (Worker (Interfaces.C.Strings.Value (Nm), Args_Impl)));
+      return Interfaces.C.Strings.New_String (Worker (Interfaces.C.Strings.Value (Nm), Args_Impl));
    end Local;
 
    procedure Init is

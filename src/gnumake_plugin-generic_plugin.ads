@@ -1,11 +1,11 @@
+pragma License (Modified_GPL);
 with Gnumake_Plugin.String_Vectors;
-
 generic
    Name : in String;
    Min_Args : Natural := 1;
    Max_Args : Natural := 1;
    Flags : Gnumake_Plugin.Flags := Gnumake_Plugin.Default;
-   with function Worker (Nm : String; Argv : String_Vectors.Vector) return  String_Vectors.Vector;
+   with function Worker (Nm : String; Argv : String_Vectors.Vector) return  String;
 
 package Gnumake_Plugin.Generic_Plugin is
    pragma Elaborate_Body;

@@ -34,10 +34,30 @@ package body Gnumake_Plugin is
       Arg := Interfaces.C.Strings.New_String (Item);
       Reply := Gnumake_Plugin.Low_Level.Gnumake_H.Gmk_Expand (Arg);
       return Ret : String := Interfaces.C.Strings.Value (Reply) do
-         Gnumake_Plugin.Low_Level.Gnumake_H.Gmk_Free (Reply);
+         Gmk_Free (Reply);
          Interfaces.C.Strings.Free (Arg);
       end return;
    end Expand;
+
+   --------------
+   -- Gmk_Free --
+   --------------
+
+   procedure Gmk_Free (Str : Interfaces.C.Strings.chars_ptr) is
+   begin
+      Gnumake_Plugin.Low_Level.Gnumake_H.Gmk_Free (Str);
+   end Gmk_Free;
+
+   ---------------
+   -- Gmk_Alloc --
+   ---------------
+
+   function Gmk_Alloc
+     (Size : Interfaces.C.Unsigned) return Interfaces.C.Strings.chars_ptr
+   is
+   begin
+      return Gnumake_Plugin.Low_Level.Gnumake_H.Gmk_Alloc (Size);
+   end Gmk_Alloc;
 
    GPLFLAG : Integer with
      Export => True,

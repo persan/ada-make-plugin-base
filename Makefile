@@ -15,9 +15,9 @@ generate:
 	cp .gen/*gnumake_h.ads src/gen
 	gprbuild -p make_plugin_base.gpr
 .PHONY: test
+
 test:
-	gprbuild -p make_plugin_base.gpr
-	${MAKE} -C test
+	${MAKE} -C example
 
 install:
 	gprinstall -p -f -P make_plugin_base.gpr

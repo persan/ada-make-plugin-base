@@ -1,4 +1,5 @@
-pragma License (GPL);
+pragma License (Modified_GPL);
+private with Interfaces.C.Strings;
 package Gnumake_Plugin is
    type Flags is (Default, No_Expand);
 
@@ -11,7 +12,8 @@ package Gnumake_Plugin is
    -- Run GNU make expansion on the provided string Item
 
 private
-
+   procedure Gmk_Free (Str : Interfaces.C.Strings.chars_ptr);
+   function Gmk_Alloc (Size : Interfaces.C.Unsigned) return Interfaces.C.Strings.chars_ptr;
    procedure Initialize with
      Export => True,
      Convention => C,
