@@ -7,16 +7,17 @@ Base-project for writing plugins to gnumake in Ada
 * make with suporting includefile `gnumake.h` 
 
 ## How to install
-```$make
+```
+$make
 $sudo make install
 ```
 
 ## How-to use.
 * In gnatstudio/gps
-** create a new project from the template Misc/Ada make plugin
-** Implemnt extra methods
-** Test
-** Done
+* create a new project from the template Misc/Ada make plugin
+* Implemnt extra methods
+* Test
+* Done
 
 ## History:
-### v1.0.0-20200331 Inital version
+* v1.0.0-20200331 Inital version
