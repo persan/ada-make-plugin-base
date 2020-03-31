@@ -1,6 +1,6 @@
 -include Makefile.conf
 
-all:
+all: test
 
 
 Makefile.conf:Makefile
@@ -14,7 +14,7 @@ generate:
 
 	cp .gen/*gnumake_h.ads src/gen
 	gprbuild -p make_plugin_base.gpr
-.PHONY: test
+.PHONY: test install uninstall reinstall tag  # IGNORE
 
 test:
 	${MAKE} -C example
@@ -23,6 +23,20 @@ install:
 	gprinstall -p -f -P make_plugin_base.gpr
 	cp -r share/gnatstudio/templates/ada_make_plugin ${PREFIX}/share/gnatstudio/templates/
 	rm -rf ${PREFIX}/lib/make_plugin_base/*
+
 uninstall:
 	rm -rf ${PREFIX}/share/gnatstudio/templates/ada_make_plugin
 	@-gprinstall -f -P make_plugin_base.gpr --uninstall	
+reinstall:uninstall  install
+
+bin/version: # IGNORE
+	gprbuild -p -P bin/helpers
+
+tag:bin/version
+	@if [ -n "`git status --porcelain `" ] ; then\
+		echo "Project is not clean!";\
+		git status;\
+		exit 1;\
+	fi
+	@echo git tag v`bin/version`-`date +%Y%m%d`
+	
