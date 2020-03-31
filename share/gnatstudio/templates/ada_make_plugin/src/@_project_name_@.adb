@@ -3,18 +3,18 @@ package body @_Project_Name_@ is
 
    -- Instaniate to register the methods.
    package Plugin is new Gnumake_Plugin.Generic_Plugin
-     (Name     => "@_sample_@",
+     (Name     => "sample",
       Min_Args => 1,
       Max_Args => 0,
       Flags    => Gnumake_Plugin.Default,
-      Worker   => @_Sample_@_Method);
+      Worker   => Sample);
 
 
-   -----------------------
-   -- @_Sample_@_Method
-   -----------------------
+   --------------
+   --  Sample  --
+   --------------
 
-   function @_Sample_@_Method
+   function Sample
      (Name : String; Argv : Gnumake_Plugin.String_Vectors.Vector) return Gnumake_Plugin.String_Vectors.Vector
    is
    begin
@@ -25,6 +25,6 @@ package body @_Project_Name_@ is
             Ret.Append ("___" & I & "___");
          end loop;
       end return;
-   end @_Sample_@_Method;
+   end Sample;
 
 end @_Project_Name_@;

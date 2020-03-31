@@ -1,13 +1,14 @@
 # Header
-Name: Ada make-plugin
-Category: Basic
+Name: Ada make plugin
+Category: Misc
 Project: @_project_name_@.gpr
 
 # Variables
 Project_Name: default: The name of the project.
-Library_Name: my_plugin: The name of the plugin.
-Method_name:  sample: the name of the first method to be used in the makefile.
+library_name: my_plugin: The name of the plugin.
+
 # Description
 [Description]
 Simplifies writing of extensions to using dynamic objects see GNU make usersguide:
    12.2 Loading Dynamic Objects
+for more information.

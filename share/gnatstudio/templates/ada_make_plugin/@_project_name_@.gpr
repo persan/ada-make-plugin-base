@@ -1,13 +1,13 @@
-library  @_Project_Name_@ extends "adamake.gpr" is
+library project @_Project_Name_@ extends "make_plugin_base.gpr" is
 
 
-   for Library_Name use "@_Library_Name_@";
+   for Library_Name use "@_library_name_@";
 
    Init_Method_Name := "lib" & project'Library_Name  & "_gmk_setup";
    --  Name of the initmethod to be called from make
    --  the above name is the default.
    
-   for Library_Interface use Adamake.Base_Library_Interface & 
+   for Library_Interface use make_plugin_base.Base_Library_Interface & 
       ("@_Project_Name_@");
    -- A list of all implementations to be used in the plugin.
       
@@ -15,7 +15,7 @@ library  @_Project_Name_@ extends "adamake.gpr" is
    for Object_Dir use ".obj";
    for Library_Dir use "lib";
 
-   for Library_Kind use Adamake'Library_Kind;
+   for Library_Kind use make_plugin_base'Library_Kind;
    for Library_Standalone use "encapsulated";
    for Library_Symbol_Policy use "restricted";
 
