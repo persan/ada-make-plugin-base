@@ -33,4 +33,5 @@ reinstall:uninstall  install
 tag:test
 	@bin/check v`bin/version`-`date +%Y%m%d`
 	@git tag v`bin/version`-`date +%Y%m%d`
-	@git push --all --tag
+	@git push
+	@git push --tag
