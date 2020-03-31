@@ -33,10 +33,7 @@ bin/version: # IGNORE
 	gprbuild -p -P bin/helpers
 
 tag:bin/version
-	@if [ -n "`git status --porcelain `" ] ; then\
-		echo "Project is not clean!";\
-		git status;\
-		exit 1;\
-	fi
-	@echo git tag v`bin/version`-`date +%Y%m%d`
-	
+	@bin/check v`bin/version`-`date +%Y%m%d`
+	@git tag v`bin/version`-`date +%Y%m%d`
+	@git push --all
+	@git push --tags
