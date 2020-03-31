@@ -15,7 +15,7 @@ $sudo make install
 ## How-to use.
 * In gnatstudio/gps
 * create a new project from the template Misc/Ada make plugin
-* Implemnt extra methods
+* Implement extra methods
 * Test
 * Done
 
