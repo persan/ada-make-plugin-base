@@ -17,7 +17,11 @@ library project Make_Plugin_Base is
                               "Gnumake_Plugin.image",
                               "Gnumake_Plugin.string_vectors");
    for Library_Interface use Base_Library_Interface;
-   for Library_Kind use "static";
+   for Library_Kind use "dynamic";
+
+   package Builder is
+      for Switches ("Ada") use ("-s", "-j0");
+   end Builder;
 
    package Compiler is
       for Switches ("Ada") use ("-gnateD" & "Init_Method_Name" & "=""" & Init_Method_Name & """",

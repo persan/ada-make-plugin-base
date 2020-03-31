@@ -10,7 +10,7 @@ library project Sample extends "../make_plugin_base.gpr" is
    for Object_Dir use ".obj";
    for Library_Dir use "lib";
    
-   for Library_Interface use make_plugin_base.Base_Library_Interface & ( "magic");
+   for Library_Interface use Make_Plugin_Base.Base_Library_Interface & ( "magic");
    for Library_Standalone use "encapsulated";
    for Library_Kind use "dynamic";
    for Library_Symbol_Policy use "restricted";
@@ -18,5 +18,9 @@ library project Sample extends "../make_plugin_base.gpr" is
    package Compiler is
       for Switches ("Ada") use ("-gnateD" & "Init_Method_Name" & "=""" & Init_Method_Name & """");
    end Compiler;
+   
+   package Builder is
+      for Switches ("Ada") use ("-s", "-j0");
+   end Builder;
 
 end Sample;
