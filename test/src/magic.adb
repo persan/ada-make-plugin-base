@@ -12,6 +12,18 @@ package body Magic is
      (Name     => "magic2",
       Worker   => Magic_Method);
 
+   package Plugin3 is new Gnumake_Plugin.Generic_Plugin
+     (Name     => "expand",
+      Min_Args => 1,
+      Max_Args => 1,
+      Worker   => Expand);
+
+   package Plugin4 is new Gnumake_Plugin.Generic_Plugin
+     (Name     => "testeval",
+      Min_Args => 1,
+      Max_Args => 1,
+      Worker   => Eval);
+
    -------------------
    -- Sample_Method --
    -------------------
@@ -26,5 +38,24 @@ package body Magic is
       end loop;
       return Ret;
    end Magic_Method;
+
+   function Expand
+     (Nm : String; Argv : Gnumake_Plugin.String_Vectors.Vector) return Gnumake_Plugin.String_Vectors.Vector
+   is
+      Ret : Gnumake_Plugin.String_Vectors.Vector;
+   begin
+      Ret.Append (Gnumake_Plugin.Expand ("${EXPAND}") & " expanded" & String'(Argv (1)));
+      return Ret;
+   end Expand;
+
+   function Eval
+     (Nm : String; Argv : Gnumake_Plugin.String_Vectors.Vector) return Gnumake_Plugin.String_Vectors.Vector
+   is
+      Ret  : Gnumake_Plugin.String_Vectors.Vector;
+   begin
+      Gnumake_Plugin.Eval ("$(error fail on line 2)", Lineno => 2, File_Name => "test.mk");
+
+      return Ret;
+   end Eval;
 
 end Magic;
