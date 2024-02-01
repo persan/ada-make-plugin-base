@@ -2,7 +2,7 @@ library project Sample extends "../make_plugin_base.gpr" is
 
 
    for Library_Name use "makepluginsample";
-
+   VERSION := "1.0.0";
    Init_Method_Name := "lib" & project'Library_Name  & "_gmk_setup";
 
 
@@ -16,7 +16,8 @@ library project Sample extends "../make_plugin_base.gpr" is
    for Library_Symbol_Policy use "restricted";
 
    package Compiler is
-      for Switches ("Ada") use ("-gnateD" & "Init_Method_Name" & "=""" & Init_Method_Name & """");
+      for Switches ("Ada") use ("-gnateD" & "Init_Method_Name" & "=""" & Init_Method_Name & """",
+                                "-gnateD" & "VERSION" & "=""" & VERSION & """");
    end Compiler;
    
    package Builder is
